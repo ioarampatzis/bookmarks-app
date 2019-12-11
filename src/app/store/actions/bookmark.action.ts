@@ -1,18 +1,17 @@
 import {Action} from '@ngrx/store';
+import {Bookmark} from '../../model/bookmark.model';
 
-export const GET_BOOKMARKS = '[Bookmark List] GET_BOOKMARKS';
-export const SET_SELECTED_BOOKMARK = '[Bookmark] SET_SELECTED_BOOKMARK';
+export const CREATE_BOOKMARK = '[Bookmark] CREATE_BOOKMARK';
+export const DELETE_BOOKMARK = '[Bookmark] DELETE_BOOKMARK';
 
-export class GetBookmarks implements Action {
-  readonly type = GET_BOOKMARKS;
-
-  constructor() { }
+export class CreateBookmark implements Action {
+  readonly type = CREATE_BOOKMARK;
+  constructor(public bookmark: Bookmark) { }
 }
 
-export class SelectedBookmark implements Action {
-  readonly type = SET_SELECTED_BOOKMARK;
-
-  constructor() { }
+export class DeleteBookmark implements Action {
+  readonly type = DELETE_BOOKMARK;
+  constructor(public bookmarkId: string) { }
 }
 
-export type BookmarkActions = GetBookmarks | SelectedBookmark;
+export type BookmarkActions = CreateBookmark | DeleteBookmark;

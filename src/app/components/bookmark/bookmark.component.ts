@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Store} from '@ngrx/store';
-import {Bookmark} from '../../model/bookmark.model';
-import {Subscription} from 'rxjs';
+import {select, Store} from '@ngrx/store';
 import {BookmarkState} from '../../store/state/bookmark.state';
 import {BookmarkGroup} from '../../model/bookmarkGroup.model';
 import {STORE} from '../../constants/constants';
+import * as BookmarkActions from '../../store/actions/bookmark.action';
+import {selectGroupedBookmarks} from '../../store/selectors/bookmark.selectors';
+import {BookmarkDialogComponent} from '../dialog/bookmark-dialog/bookmark-dialog.component';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-bookmark',
@@ -12,17 +14,36 @@ import {STORE} from '../../constants/constants';
   styleUrls: ['./bookmark.component.scss']
 })
 export class BookmarkComponent implements OnInit {
-  bookmarkListSubscription: Subscription;
-  groupListSubscription: Subscription;
-
-  bookmarkList: Bookmark[];
   groupList: BookmarkGroup[];
+  groupedBookmarks: object;
 
-  constructor(private store: Store<BookmarkState>) { }
+  displayedColumns = ['name', 'url', 'actions'];
+
+  constructor(
+    private store: Store<BookmarkState>,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
-    this.bookmarkListSubscription = this.store.subscribe(x => this.bookmarkList = x[STORE.BOOKMARKS].bookmarkList);
-    this.groupListSubscription =  this.store.pipe().subscribe(x => this.groupList = x[STORE.BOOKMARKS].groupList);
+    this.store.subscribe(store => this.groupList = store[STORE.BOOKMARKS].groupList);
+
+    this.store.pipe(select(selectGroupedBookmarks)).subscribe(groupedBookmarks => {
+      this.groupedBookmarks = groupedBookmarks;
+    });
   }
 
+  delete(bookmarkId: string) {
+    this.store.dispatch(
+      new BookmarkActions.DeleteBookmark(bookmarkId)
+    );
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '400px';
+    dialogConfig.height = '350px';
+
+    this.dialog.open(BookmarkDialogComponent, dialogConfig);
+  }
 }

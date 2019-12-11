@@ -1,0 +1,26 @@
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 60px;
+}
+
+.container {
+  margin: 10px;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-name {
+  width: 30%;
+}
+
+.mat-column-url {
+  width: 60%;
+}
+.mat-column-actions {
+  width: 10%
+}
