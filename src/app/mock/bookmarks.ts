@@ -5,8 +5,32 @@ export const BOOKMARK_GROUPS = [
 ];
 
 export const BOOKMARKS = [
-  { id: 'e37d1380-e685-48d6-9c33-f19cc072f0c4', name: 'NAME_0', url: 'www.name0.org', groupId:  BOOKMARK_GROUPS[0].id},
-  { id: '140eff6d-f51b-45fb-b0da-7b7ba59ca8fd', name: 'NAME_1', url: 'www.name1.org', groupId:  BOOKMARK_GROUPS[1].id},
-  { id: 'a80e674e-1593-4843-a575-bb5a9b0c1a9e', name: 'NAME_2', url: 'www.name2.org', groupId:  BOOKMARK_GROUPS[2].id},
-  { id: '8518654d-5cbd-4608-aab8-dd56e1d960c9', name: 'NAME_3', url: 'www.name3.org', groupId:  BOOKMARK_GROUPS[0].id}
+  { id: 'e37d1380-e685-48d6-9c33-f19cc072f0c4',
+    name: 'Angular Material',
+    url: 'https://material.angular.io/',
+    groupId:  BOOKMARK_GROUPS[0].id
+  },
+  {
+    id: '140eff6d-f51b-45fb-b0da-7b7ba59ca8fd',
+    name: 'DZone',
+    url: 'https://dzone.com/',
+    groupId:  BOOKMARK_GROUPS[1].id
+  },
+  { id: 'a80e674e-1593-4843-a575-bb5a9b0c1a9e',
+    name: 'Google',
+    url: 'https://www.google.com/',
+    groupId:  BOOKMARK_GROUPS[2].id
+  },
+  {
+    id: '8518654d-5cbd-4608-aab8-dd56e1d960c9',
+    name: 'NGRX',
+    url: 'https://ngrx.io/',
+    groupId:  BOOKMARK_GROUPS[0].id
+  },
+  {
+    id: '4b5eb776-05f4-45ae-bb16-93256fb4b9b1',
+    name: 'Angular',
+    url: 'https://angular.io/',
+    groupId:  BOOKMARK_GROUPS[0].id
+  }
 ];

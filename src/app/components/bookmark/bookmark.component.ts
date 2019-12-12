@@ -7,6 +7,7 @@ import * as BookmarkActions from '../../store/actions/bookmark.action';
 import {selectGroupedBookmarks} from '../../store/selectors/bookmark.selectors';
 import {BookmarkDialogComponent} from '../dialog/bookmark-dialog/bookmark-dialog.component';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-bookmark',
@@ -21,7 +22,8 @@ export class BookmarkComponent implements OnInit {
 
   constructor(
     private store: Store<BookmarkState>,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -44,6 +46,16 @@ export class BookmarkComponent implements OnInit {
     dialogConfig.width = '400px';
     dialogConfig.height = '350px';
 
-    this.dialog.open(BookmarkDialogComponent, dialogConfig);
+    const dialogRef = this.dialog.open(BookmarkDialogComponent, dialogConfig);
+
+    const dialogSubscription = dialogRef.componentInstance.bookmarkCreationEvent.subscribe(() => {
+      this.snackBar.open('Bookmark successfully saved!', '', {
+        duration: 3000,
+      });
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      dialogSubscription.unsubscribe();
+    });
   }
 }

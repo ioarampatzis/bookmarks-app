@@ -11,9 +11,11 @@ import {
   MatButtonModule,
   MatDialogModule,
   MatFormFieldModule,
-  MatIconModule, MatInputModule,
+  MatIconModule,
+  MatInputModule,
   MatListModule,
   MatSelectModule,
+  MatSnackBarModule,
   MatTableModule,
   MatTabsModule,
   MatToolbarModule
@@ -42,7 +44,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatSelectModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

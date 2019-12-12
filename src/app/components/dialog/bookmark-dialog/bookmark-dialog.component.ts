@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {BookmarkState} from '../../../store/state/bookmark.state';
@@ -13,6 +13,8 @@ import * as uuid from 'uuid';
   styleUrls: ['./bookmark-dialog.component.scss']
 })
 export class BookmarkDialogComponent implements OnInit {
+  bookmarkCreationEvent = new EventEmitter();
+
   groupList: string[];
   bookmarkForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -33,6 +35,11 @@ export class BookmarkDialogComponent implements OnInit {
       return;
     }
 
+    if (!this.bookmarkForm.get('url').value.startsWith('http')) {
+      const url = this.bookmarkForm.get('url').value;
+      this.bookmarkForm.get('url').setValue('https://' + url);
+    }
+
     const formValues = this.bookmarkForm.value;
     this.store.dispatch(
       new BookmarkActions.CreateBookmark({
@@ -42,7 +49,8 @@ export class BookmarkDialogComponent implements OnInit {
         groupId: formValues.groupId
       })
     );
-    this.dialog.close();
+    this.bookmarkCreationEvent.emit();
+    this.dialog.close('bookmarkSaved');
   }
 
   close() {
