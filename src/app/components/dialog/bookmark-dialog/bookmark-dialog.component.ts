@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {BookmarkState} from '../../../store/state/bookmark.state';
@@ -24,7 +24,8 @@ export class BookmarkDialogComponent implements OnInit {
 
   constructor(
     private store: Store<BookmarkState>,
-    private dialog: MatDialogRef<BookmarkDialogComponent>) { }
+    private dialog: MatDialogRef<BookmarkDialogComponent>) {
+  }
 
   ngOnInit() {
     this.store.subscribe(store => this.groupList = store[STORE.BOOKMARKS].groupList);
@@ -35,6 +36,7 @@ export class BookmarkDialogComponent implements OnInit {
       return;
     }
 
+    // Add the prefix "https://" in the url in case it is not present
     if (!this.bookmarkForm.get('url').value.startsWith('http')) {
       const url = this.bookmarkForm.get('url').value;
       this.bookmarkForm.get('url').setValue('https://' + url);
@@ -49,8 +51,9 @@ export class BookmarkDialogComponent implements OnInit {
         groupId: formValues.groupId
       })
     );
+    // Emit the Event to display a notification it the ParentComponent
     this.bookmarkCreationEvent.emit();
-    this.dialog.close('bookmarkSaved');
+    this.dialog.close();
   }
 
   close() {

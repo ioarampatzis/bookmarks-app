@@ -1,3 +1,5 @@
+/* Test data to be displayed when the bookmark component is loaded */
+
 export const BOOKMARK_GROUPS = [
   { id: 'cbde6bab-88b5-420d-b15a-a5d04071f157', name: 'WORK'},
   { id: '73c3d29a-141e-4922-acc5-150b9dfce295', name: 'LEISURE'},

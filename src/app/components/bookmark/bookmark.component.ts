@@ -16,6 +16,7 @@ import {MatSnackBar} from '@angular/material';
 })
 export class BookmarkComponent implements OnInit {
   groupList: BookmarkGroup[];
+  // Gets the booksmarks grouped by grouId in an Object of the form {[groupId] : Bookmark[]}
   groupedBookmarks: object;
 
   displayedColumns = ['name', 'url', 'actions'];
@@ -24,7 +25,8 @@ export class BookmarkComponent implements OnInit {
     private store: Store<BookmarkState>,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.store.subscribe(store => this.groupList = store[STORE.BOOKMARKS].groupList);
@@ -38,8 +40,14 @@ export class BookmarkComponent implements OnInit {
     this.store.dispatch(
       new BookmarkActions.DeleteBookmark(bookmarkId)
     );
+
+    // Display message when a Bookmark is deleted
+    this.snackBar.open('Bookmark successfully deleted!', '', {
+      duration: 3000,
+    });
   }
 
+  // Opens the Dialog for the Bookmark creation
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
@@ -48,6 +56,7 @@ export class BookmarkComponent implements OnInit {
 
     const dialogRef = this.dialog.open(BookmarkDialogComponent, dialogConfig);
 
+    // Display message when a Bookmark is saved
     const dialogSubscription = dialogRef.componentInstance.bookmarkCreationEvent.subscribe(() => {
       this.snackBar.open('Bookmark successfully saved!', '', {
         duration: 3000,

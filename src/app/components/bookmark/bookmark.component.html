@@ -4,15 +4,17 @@
 
 <div class="container">
 
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="openDialog()"
-    >
-      <mat-icon>add</mat-icon>
-      <span>Create Bookmark</span>
-    </button>
+  <!-- Create Bookmar Button -->
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="openDialog()"
+  >
+    <mat-icon>add</mat-icon>
+    <span>Create Bookmark</span>
+  </button>
 
+  <!-- Bookmarks Table -->
   <mat-tab-group>
     <span *ngFor="let group of groupList">
       <mat-tab label="{{group.name}}">
@@ -31,7 +33,8 @@
           <ng-container matColumnDef="url">
             <th mat-header-cell *matHeaderCellDef>URL</th>
             <td mat-cell *matCellDef="let element">
-              <a href="{{element.url.startsWith('http') ? element.url : '//'+element.url}}" target="_blank" rel="noopener"> {{element.url}}</a>
+              <a href="{{element.url.startsWith('http') ? element.url : '//'+element.url}}" target="_blank"
+                 rel="noopener"> {{element.url}}</a>
             </td>
           </ng-container>
 

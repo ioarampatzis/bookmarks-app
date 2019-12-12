@@ -1,5 +1,3 @@
-import {BookmarkGroup} from './bookmarkGroup.model';
-
 export class Bookmark {
   id: string;
   name: string;

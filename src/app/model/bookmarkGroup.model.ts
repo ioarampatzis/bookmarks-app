@@ -4,7 +4,7 @@ export class BookmarkGroup {
 
   constructor(id: string,
               name: string) {
-      this.id = id;
-      this.name = name;
+    this.id = id;
+    this.name = name;
   }
 }

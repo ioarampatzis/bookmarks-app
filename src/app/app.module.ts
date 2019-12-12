@@ -51,4 +51,5 @@ import {ReactiveFormsModule} from '@angular/forms';
   bootstrap: [AppComponent],
   entryComponents: [BookmarkDialogComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
