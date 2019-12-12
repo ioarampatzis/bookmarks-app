@@ -17,10 +17,6 @@ Two components were created for this application:
 
 ![Bookmark Component](https://github.com/ioarampatzis/bookmarks-app/blob/master/screenshots/Screenshot_1.png?raw=true)	
 
-* After pressing the delete button, the bookmark is removed from the table and a notification message is displayed.
-
-![Bookmark Component Deletion](https://github.com/ioarampatzis/bookmarks-app/blob/master/screenshots/Screenshot_4.png?raw=true)	
-
 #### 2. Bookmark Dialog
 * **Form** for the creation of a new bookmark (all fields are required).  
 
@@ -30,6 +26,10 @@ Two components were created for this application:
 * After pressing the save button, the bookmark is added to the table and a success message is displayed.
 
 ![Bookmark Component Creation](https://github.com/ioarampatzis/bookmarks-app/blob/master/screenshots/Screenshot_3.png?raw=true)	
+
+* After pressing the delete button of the Bookmarks component, the bookmark is removed from the table and a notification message is displayed.
+
+![Bookmark Component Deletion](https://github.com/ioarampatzis/bookmarks-app/blob/master/screenshots/Screenshot_4.png?raw=true)	
 
 ### Model
 The model of the application consists of two entities:   
