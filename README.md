@@ -1,10 +1,10 @@
 # Bookmark Application
 This is an application for managing Bookmarks (create & delete), written in Angular 8.  
-For the generation of the project [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20 was used.
+For the generation of the project, [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20 was used.
 
 
 ## How to Run
-In order to run the application, clone this repo and run the command ```ng serve```. The application is accessible at [localhost:4200](http://localhost:4200).
+In order to run the application, clone this repo and run the command ```npm install``` in the root of the project and then run the command ```ng serve```. The application will be accessible at [localhost:4200](http://localhost:4200).
 
 ## Documentation
 
@@ -17,6 +17,10 @@ Two components were created for this application:
 
 ![Bookmark Component](https://github.com/ioarampatzis/bookmarks-app/blob/master/screenshots/Screenshot_1.png?raw=true)	
 
+* After pressing the delete button, the bookmark is removed from the table and a notification message is displayed.
+
+![Bookmark Component Deletion](https://github.com/ioarampatzis/bookmarks-app/blob/master/screenshots/Screenshot_4.png?raw=true)	
+
 #### 2. Bookmark Dialog
 * **Form** for the creation of a new bookmark (all fields are required).  
 
@@ -26,10 +30,6 @@ Two components were created for this application:
 * After pressing the save button, the bookmark is added to the table and a success message is displayed.
 
 ![Bookmark Component Creation](https://github.com/ioarampatzis/bookmarks-app/blob/master/screenshots/Screenshot_3.png?raw=true)	
-
-* After pressing the delete button of the Bookmarks component, the bookmark is removed from the table and a notification message is displayed.
-
-![Bookmark Component Deletion](https://github.com/ioarampatzis/bookmarks-app/blob/master/screenshots/Screenshot_4.png?raw=true)	
 
 ### Model
 The model of the application consists of two entities:   
